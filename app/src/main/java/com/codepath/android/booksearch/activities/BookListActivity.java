@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+
 import androidx.appcompat.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,11 +37,16 @@ public class BookListActivity extends AppCompatActivity {
     private BookAdapter bookAdapter;
     private BookClient client;
     private ArrayList<Book> abooks;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
+
+        // Retrieve Toolbar view an set it as the action bar
+        toolbar = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
 
         rvBooks = findViewById(R.id.rvBooks);
         abooks = new ArrayList<>();

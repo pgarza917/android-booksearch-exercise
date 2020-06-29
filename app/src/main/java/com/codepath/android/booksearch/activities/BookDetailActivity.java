@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.codepath.android.booksearch.R;
@@ -19,6 +20,7 @@ public class BookDetailActivity extends AppCompatActivity {
     private ImageView ivBookCover;
     private TextView tvTitle;
     private TextView tvAuthor;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class BookDetailActivity extends AppCompatActivity {
         ivBookCover = (ImageView) findViewById(R.id.ivBookCover);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvAuthor = (TextView) findViewById(R.id.tvAuthor);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // Extract book object from intent extras
         Book book = Parcels.unwrap(getIntent().getParcelableExtra(Book.class.getSimpleName()));
@@ -42,6 +45,7 @@ public class BookDetailActivity extends AppCompatActivity {
 
         Glide.with(this).load(bookCoverUrl).into(ivBookCover);
 
+        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(title);
 
     }
